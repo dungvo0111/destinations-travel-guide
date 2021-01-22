@@ -4,23 +4,37 @@ import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
-const routes = [ 
+const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/destination-details/:slug",
     name: "DestinationDetails",
+    props: true,
     component: () =>
-    import(/* webpackChunkName: "destination-details" */ "../views/DestinationDetails.vue")
+      import(
+        /* webpackChunkName: "destination-details" */ "../views/DestinationDetails.vue"
+      ),
+    children: [
+      {
+        path: "experiences/:experienceSlug",
+        name: "ExperienceDetails",
+        props: true,
+        component: () =>
+          import(
+            /* webpackChunkName: "experience-details" */ "../views/ExperienceDetails.vue"
+          ),
+      },
+    ],
   },
 ];
 
 const router = new VueRouter({
   mode: "history",
-  routes
+  routes,
 });
 
 export default router;

@@ -7,10 +7,20 @@
         v-for="destination in destinations"
         :key="destination.name"
       >
-        <router-link :to="{name:'DestinationDetails', params: {slug: destination.slug}}">
+        <router-link
+          :to="{
+            name: 'DestinationDetails',
+            params: { slug: destination.slug },
+          }"
+        >
           <h3>{{ destination.name }}</h3>
         </router-link>
-        <router-link :to="{name:'DestinationDetails', params: {slug: destination.slug}}">
+        <router-link
+          :to="{
+            name: 'DestinationDetails',
+            params: { slug: destination.slug },
+          }"
+        >
           <img
             :src="require(`@/assets/${destination.image}`)"
             :alt="`${destination.name} img`"
@@ -50,6 +60,11 @@ export default {
   display: flex;
   flex-direction: column;
   margin-right: 20px;
+}
+
+.destination a {
+  text-decoration: none;
+  color: black;
 }
 
 h3:hover {
