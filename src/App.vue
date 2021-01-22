@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <TheNavigation />
-    <router-view :key="$route.path" />
+    <transition name="slide" mode="out-in">
+      <router-view :key="$route.path" />
+    </transition>
   </div>
 </template>
 
@@ -22,5 +24,22 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.slide-enter-active {
+  transition: all 500ms ease-in;
+}
+
+.slide-leave-active {
+  transition: all 300ms ease-in-out;
+}
+
+.slide-enter {
+  opacity: 0;
+  transform: translateX(-20%)
+}
+
+.slide-leave-to {
+ opacity: 0.5;
 }
 </style>
