@@ -35,9 +35,11 @@ const routes = [
         (destination) => destination.slug === to.params.slug
       );
 
-      let experienceSlugExist = slugExist && slugExist.experiences.find(
-        (experience) => experience.slug === to.params.experienceSlug
-      );
+      let experienceSlugExist =
+        slugExist &&
+        slugExist.experiences.find(
+          (experience) => experience.slug === to.params.experienceSlug
+        );
 
       if (!to.params.experienceSlug) {
         slugExist ? next() : next({ name: "NotFound" });
